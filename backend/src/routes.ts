@@ -12,7 +12,7 @@ const router = Router();
 //   return res.json({ ok: true });
 // });
 
-// User Routes
+// User Routes - users é chamado. Chama o Controller
 router.post('/users', new CreateUserController().handle)
 
 // Exportando o objeto de roteamento
