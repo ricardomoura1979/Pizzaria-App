@@ -1,6 +1,8 @@
 
 
 import prismaClient from "../../prisma";
+
+import { hash } from "bcryptjs";
 // receber email, name e password
 
 interface UserRequest {
@@ -17,6 +19,8 @@ class CreateUserService{
         if(!email){
             throw new Error("Email incorrect")
         }
+
+        const passwordHash = await hash(password, 8)
 
 
         //verificar se email já está cadastrado
@@ -35,7 +39,7 @@ class CreateUserService{
            data:{
             name: name,
             email: email,
-            password: password,
+            password: passwordHash,
            }
         })
 
