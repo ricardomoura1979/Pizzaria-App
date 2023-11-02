@@ -2,6 +2,7 @@
 // Importando as dependências
 import { Router } from 'express';
 import { CreateUserController } from './controllers/user/CreateUserController'
+import { AuthUserController } from './services/user/AuthUserController';
 
 // Criando o objeto de roteamento
 const router = Router();
@@ -14,6 +15,6 @@ const router = Router();
 
 // User Routes - users é chamado. Chama o Controller
 router.post('/users', new CreateUserController().handle)
-
+router.post('/session', new AuthUserController().handle)
 // Exportando o objeto de roteamento
 export { router };
